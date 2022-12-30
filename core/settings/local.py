@@ -4,10 +4,10 @@ from .base import *
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-nhipm18hs$fm*+rq@bg&a((e#2^f0r1#a((yh9v&xtkpywsa@m'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = []
 
@@ -17,8 +17,12 @@ ALLOWED_HOSTS = []
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': env('POSTGRESQL_NAME'),
+        'USER': env('POSTGRESQL_USER'),
+        'PASSWORD': env('POSTGRESQL_PASS'),
+        'HOST': env('POSTGRESQL_HOST'),
+        'PORT': env('POSTGRESQL_PORT'),
     }
 }
 
